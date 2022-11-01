@@ -5,7 +5,7 @@ export default function Authorize({ Auth }) {
   const [pass, setPass] = useState("");
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("entered password: ", pass);
+    // console.log("entered password: ", pass);
 
     const auth_return = Auth(pass);
     if (auth_return) {

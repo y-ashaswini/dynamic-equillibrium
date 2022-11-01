@@ -24,17 +24,22 @@ export default function Add() {
 
     const handlenew = async () => {
       const docRef = doc(db, "blogs", newblog.id);
-      await setDoc(docRef, newblog);
+      // await setDoc(docRef, newblog);
+      setDoc(docRef, newblog);
     };
 
     handlenew();
-
+    document.getElementById("added").innerText = "ADDED!";
     setTitle("");
     setContent("");
   }
 
   return (
     <div className="bg-dark w-screen min-h-[90vh] pb-[10vh] overflow-y-scroll scrollbar-thin scrollbar-thumb-[#77AFA0] scrollbar-track-[#363538] scrollbar-thumb-rounded-full">
+      <div
+        id="added"
+        className="bg-yellow w-full font-bold font-dark flex items-center justify-center"
+      ></div>
       <div className="flex justify-between w-[40vw] mx-auto py-6">
         <img src={bold} className="hover:scale-[1.2] h-[2rem] cursor-pointer" />
         <img
@@ -64,7 +69,7 @@ export default function Add() {
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="bg-dark w-[50%] text-center mx-auto my-6 text-[5rem] outline-none font-green break-normal"
+          className="bg-dark text-center my-6 font-bold text-[5rem] outline-none font-green break-normal"
         />
         <textarea
           placeholder="CONTENT"

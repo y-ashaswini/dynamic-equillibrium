@@ -6,7 +6,7 @@ export default function NavbarWeb({ auth, Auth }) {
   const logout_classes = auth ? "inline" : "hidden";
   function handleLogout() {
     const auth_return = Auth(0);
-    console.log("logged out");
+    // console.log("logged out");
     navigate("/read");
     return auth_return;
   }

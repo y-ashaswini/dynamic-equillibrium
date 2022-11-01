@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import heart from "../images/heart.png";
-
-export default function BlogDetails({ allData }) {
-  // console.log(allData);
+import Data from "../Data";
+export default function BlogDetails() {
+  const allData = Data();
   const [details, setDetails] = useState([]);
   const currentid = window.location.pathname.split("/")[2];
   useEffect(() => {
@@ -14,10 +14,6 @@ export default function BlogDetails({ allData }) {
       }
     });
   }, [allData]);
-
-  // const docRef = doc(db, 'blogs', allData.id);
-  // const payload = {};
-  // setDoc(docRef, payload);
 
   return (
     <div className="bg-dark w-screen h-[90vh] pb-[10vh] font-yellow text-center overflow-x-hidden font-green ">

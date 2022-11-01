@@ -1,9 +1,9 @@
 import Blogtile from "./Blogtile";
 import { Link, useParams } from "react-router-dom";
-
-export default function Read({ allData }) {
+import Data from "../Data";
+export default function Read() {
+  const allData = Data();
   const { id } = useParams();
-
   return (
     <div className="bg-dark w-screen h-[90vh] pb-[10vh] overflow-y-scroll scrollbar-thin scrollbar-thumb-[#77AFA0] scrollbar-track-[#363538] scrollbar-thumb-rounded-full">
       {/* <Blogtile
