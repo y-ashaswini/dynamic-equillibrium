@@ -8,6 +8,7 @@ import {
 import Home from "./Components/Home";
 import NavbarWeb from "./Components/NavbarWeb";
 import NavbarMobile from "./Components/NavbarMobile";
+import Footer from "./Components/Footer";
 import Add from "./Components/Add";
 import Read from "./Components/Read";
 import BlogDetails from "./Components/BlogDetails";
@@ -17,7 +18,7 @@ import { useEffect, useState } from "react";
 import Data from "./Data";
 export default function App() {
   // useEffect(() => {
-  const allData = Data();
+  const [allData, Loader] = Data();
   // }, []);
 
   const [auth, setAuth] = useState(false);
@@ -50,7 +51,7 @@ export default function App() {
       </div>
       <Routes>
         <Route path="/" exact element={<Home />} />
-        <Route path="/read" exact element={<Read />} />
+        <Route path="/read" exact element={<Read auth={auth} />} />
         <Route path="/authorize" exact element={<Authorize Auth={Auth} />} />
         <Route
           path="/add"
@@ -64,13 +65,14 @@ export default function App() {
           path="/read/:id/edit"
           element={
             <PrivateRoute auth={auth}>
-              <Edit allData={allData} />
+              <Edit allData={allData} loader = {Loader}/>
             </PrivateRoute>
           }
         />
-        <Route exact path="/read/:id" element={<BlogDetails />} />
+        <Route exact path="/read/:id" element={<BlogDetails auth={auth} />} />
         <Route path="*" element={<Navigate to="/read" />} />
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }

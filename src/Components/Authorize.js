@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 export default function Authorize({ Auth }) {
   const navigate = useNavigate();
   const [pass, setPass] = useState("");
@@ -18,14 +18,14 @@ export default function Authorize({ Auth }) {
   }
   return (
     <div className="bg-dark w-screen min-h-[90vh] font-yellow">
-      <div className="font-bold text-[3rem] ml-[2rem]">
+      <div className="font-bold md:text-[3rem] text-[2rem] ml-[2rem]">
         VERIFY YOUR IDENTITY
       </div>
       <div
         id="error_alert"
         className="font-bold font-green mt-8 text-center text-3xl"
       ></div>
-      <form className="w-[45%] absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%]">
+      <form className="md:w-[45%] w-[65%] absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%]">
         <input
           type="password"
           placeholder="PASSWORD"
@@ -35,7 +35,7 @@ export default function Authorize({ Auth }) {
         />
 
         <button
-          className="cursor-pointer font-dark bg-yellow rounded-sm text-center font-bold px-4 py-2 text-xl m-auto"
+          className="cursor-pointer font-dark bg-yellow rounded-sm text-center font-bold px-4 py-2 text-xl m-auto "
           onClick={handleSubmit}
         >
           AUTHORIZE

@@ -4,6 +4,7 @@ import db from "./firebase";
 
 export default function Data() {
   const [allData, setAllData] = useState([]);
+  const [Loader, setLoader] = useState(1);
   useEffect(() => {
     // console.log("use effect ran");
     const q = query(collection(db, "blogs"));
@@ -18,11 +19,12 @@ export default function Data() {
           content: doc.data().content,
         };
         setAllData((prev) => [...prev, newblog]);
+        setLoader(null);
         // console.log("data now: ", allData);
       });
     };
     temp();
   }, []);
 
-  return allData;
+  return [allData, Loader];
 }

@@ -12,7 +12,7 @@ export default function NavbarWeb({ auth, Auth }) {
   const vi =
     ifhome === ""
       ? "hidden"
-      : "bg-dark h-[10vh] px-10 font-yellow z-30 flex relative text-2xl justify-around m-0";
+      : "bg-dark h-[10vh] px-4 font-yellow z-30 flex relative text-sm justify-around m-0";
 
   const class_read = ifhome === "read" ? "font-bold my-auto" : "my-auto";
   const class_write = ifhome === "add" ? "font-bold my-auto" : " my-auto";
@@ -20,18 +20,18 @@ export default function NavbarWeb({ auth, Auth }) {
   return (
     <div className={vi}>
       <Link to="/" className="my-auto">
-        H
+        HOME
       </Link>
 
       <Link to="./read" className={class_read}>
-        R
+        LIST
       </Link>
       <Link to="./add" className={class_write}>
-        W
+        WRITE
       </Link>
 
       <button className={logout_classes} onClick={handleLogout}>
-        L
+        LOGOUT
       </button>
     </div>
   );

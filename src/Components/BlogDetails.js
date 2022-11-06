@@ -1,38 +1,92 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import heart from "../images/heart.png";
 import Data from "../Data";
-export default function BlogDetails() {
-  const allData = Data();
+import { handleDelete } from "./handleDelete";
+export default function BlogDetails({ auth }) {
+  const navigate = useNavigate();
+  const [allData, Loader] = Data();
   const [details, setDetails] = useState([]);
   const currentid = window.location.pathname.split("/")[2];
   useEffect(() => {
     allData.map((each) => {
       if (each.id == currentid) {
-        const temp = { id: each.id, title: each.title, content: each.content };
+        console.log(each);
+        const temp = {
+          id: each.id,
+          title: each.title,
+          content: each.content,
+          likes: each.likes,
+        };
+        console.log("num of likes: " + each.likes);
         setDetails(temp);
       }
     });
   }, [allData]);
 
+  useEffect(() => {
+    if (auth) {
+      const message2 = document.getElementById("message");
+      message2.innerText = "YOU ARE AUTHORIZED TO EDIT AND DELETE";
+      setTimeout(() => {
+        message2.innerText = "";
+      }, 3000);
+    }
+  }, [auth]);
+
+  function handleDeleteClick() {
+    console.log("delete clicked, ", currentid);
+    if (auth) {
+      const mess = handleDelete(currentid);
+      const message = document.getElementById("message");
+      message.innerText = mess;
+      setTimeout(() => {
+        message.innerText = "";
+        navigate("./read");
+      }, 3000);
+    } else {
+      const message = document.getElementById("message");
+      message.innerText = "YOU ARE NOT AUTHORISED TO DELETE BLOGS!";
+      setTimeout(() => {
+        message.innerText = "";
+      }, 3000);
+    }
+  }
+
   return (
     <div className="bg-dark w-screen h-[90vh] pb-[10vh] font-yellow text-center overflow-x-hidden font-green ">
-      <div className="text-[5rem] font-bold">
+      <div
+        id="message"
+        className="bg-yellow w-full mb-8 font-bold font-dark flex items-center justify-center"
+      ></div>
+      <div className="w-full text-center font-bold font-green text-3xl">
+        {Loader && `LOADING...`}
+      </div>
+      <div className="md:text-[5rem] text-[3rem] font-bold">
         {/* {console.log("title:", details.title)} */}
         {details.title ? details.title.toUpperCase() : details.title}
       </div>
       <div className="font-redhat text-xl text-left mx-[18vw] my-[5vh]">
         {details && details.content}
       </div>
-      <div className="flex justify-between mx-[15vw]">
-        <Link to="./edit">
-          <button className=" cursor-pointer font-dark bg-yellow rounded-sm text-center font-bold px-4 py-2 text-xl my-auto mx-4">
-            EDIT
+      <div className="flex justify-between sm:mx-[15vw] mx-[5vw]">
+        <div className="flex">
+          <button
+            onClick={handleDeleteClick}
+            className="cursor-pointer font-dark md:text-xl bg-yellow font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 "
+          >
+            DELETE
           </button>
-        </Link>
-        <button className=" cursor-pointer font-dark bg-yellow rounded-sm text-center font-bold px-4 py-2 text-xl my-auto mx-4 flex align-middle gap-2">
-          <img src={heart} className="max-h-[1.8rem]" />
-          25
+          <Link
+            className=" cursor-pointer bg-yellow md:text-xl font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 mx-4 my-auto"
+            to="./edit"
+          >
+            EDIT
+          </Link>
+        </div>
+        <button className=" cursor-pointer font-dark bg-yellow rounded-sm text-center font-bold md:px-4 md:py-2 p-1 md:text-xl my-auto mx-4 flex align-middle gap-2">
+          <img src={heart} className="md:h-[1.8rem] h-[1.2rem]" />
+          {details.likes}
         </button>
       </div>
     </div>
