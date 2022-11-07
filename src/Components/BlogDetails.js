@@ -55,7 +55,7 @@ export default function BlogDetails({ auth }) {
   }
 
   return (
-    <div className="bg-dark w-screen h-[85vh] pb-[20vh] font-yellow text-center overflow-x-hidden font-green overflow-y-scroll scrollbar-thin scrollbar-thumb-[#77AFA0] scrollbar-track-[#363538] scrollbar-thumb-rounded-full">
+    <div className="bg-dark w-screen h-[85vh] pb-[20vh] font-green text-center overflow-x-hidden overflow-y-scroll scrollbar-thin scrollbar-thumb-[#77AFA0] scrollbar-track-[#363538] scrollbar-thumb-rounded-full">
       <div
         id="message"
         className="text-sm md:text-xl bg-yellow w-full font-bold font-dark flex items-center justify-center fixed"

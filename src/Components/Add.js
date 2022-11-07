@@ -88,7 +88,7 @@ export default function Add() {
   }
 
   return (
-    <div className="bg-dark w-screen min-h-[85vh] pb-[10vh] overflow-y-scroll scrollbar-thin scrollbar-thumb-[#77AFA0] scrollbar-track-[#363538] scrollbar-thumb-rounded-full">
+    <div className="bg-dark w-screen h-[85vh] pb-[10vh] overflow-x-hidden overflow-y-scroll scrollbar-thin scrollbar-thumb-[#77AFA0] scrollbar-track-[#363538] scrollbar-thumb-rounded-full">
       <div
         id="added"
         className="text-sm md:text-xl bg-yellow fixed w-full font-bold font-dark flex items-center justify-center"
@@ -130,7 +130,7 @@ export default function Add() {
           id="contentid"
           // style="white-space: pre-line"
           onChange={(e) => setContent(e.target.value)}
-          className="text-xl font-redhat whitespace-normal break-normal bg-dark lg:mx-[18vw] mx-[10vw] my-[5vh] outline-none font-green min-h-[70vh]"
+          className="text-xl font-redhat whitespace-normal break-normal bg-dark lg:mx-[18vw] mx-[10vw] my-[5vh] outline-none font-green min-h-[40vh]"
         />
         <button
           onClick={(e) => handleSubmitBlog(e)}
