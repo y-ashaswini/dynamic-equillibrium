@@ -30,7 +30,7 @@ export default function Read({ auth }) {
       {allData &&
         allData.map((each) => (
           <Blogtile
-          key={each.id}
+            key={each.id}
             id={each.id}
             title={each.title}
             content={each.content}

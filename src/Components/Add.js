@@ -18,7 +18,7 @@ export default function Add() {
       id: v4(),
       title: title,
       content: content,
-      likes: parseInt(0),
+      likes: 0,
     };
 
     const handlenew = async () => {
@@ -44,6 +44,7 @@ export default function Add() {
       contentid.selectionEnd
     );
     contentid.setRangeText(`**${selected}**`);
+    setContent(contentid.value);
   }
 
   function makeItalics() {
@@ -57,6 +58,7 @@ export default function Add() {
       contentid.selectionEnd
     );
     contentid.setRangeText(`*${selected}*`);
+    setContent(contentid.value);
   }
   function makeH() {
     const contentid = document.getElementById("contentid");
@@ -69,6 +71,7 @@ export default function Add() {
       contentid.selectionEnd
     );
     contentid.setRangeText(`# ${selected}`);
+    setContent(contentid.value);
   }
   function makesH() {
     const contentid = document.getElementById("contentid");
@@ -81,6 +84,7 @@ export default function Add() {
       contentid.selectionEnd
     );
     contentid.setRangeText(`### ${selected}`);
+    setContent(contentid.value);
   }
 
   return (
@@ -126,7 +130,7 @@ export default function Add() {
           id="contentid"
           // style="white-space: pre-line"
           onChange={(e) => setContent(e.target.value)}
-          className="font-redhat whitespace-normal break-normal bg-dark lg:mx-[18vw] mx-[10vw] my-[5vh] outline-none font-green min-h-[70vh]"
+          className="text-xl font-redhat whitespace-normal break-normal bg-dark lg:mx-[18vw] mx-[10vw] my-[5vh] outline-none font-green min-h-[70vh]"
         />
         <button
           onClick={(e) => handleSubmitBlog(e)}

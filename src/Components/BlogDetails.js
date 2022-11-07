@@ -89,7 +89,7 @@ export default function BlogDetails({ auth }) {
             </Link>
           </div>
           <button className=" cursor-pointer font-dark bg-yellow rounded-sm text-center font-bold md:px-4 md:py-2 p-1 md:text-xl my-auto flex align-middle gap-2">
-            {details.likes}{" "}
+            {details.likes + 0}
             <img src={heart} className="md:h-[1.8rem] h-[1.2rem]" />
           </button>
         </div>

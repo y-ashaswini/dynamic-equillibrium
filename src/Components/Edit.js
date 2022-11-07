@@ -7,10 +7,12 @@ import italics from "../images/italics.png";
 import H from "../images/H.png";
 import sH from "../images/sH.png";
 import Data from "../Data";
+import { useNavigate } from "react-router-dom";
 
 export default function Edit() {
   const [allData, Loader] = Data();
   var ifshow = "hidden";
+  const navigate = useNavigate();
 
   const currentid = window.location.pathname.split("/")[2].trim();
 
@@ -53,6 +55,10 @@ export default function Edit() {
     console.log("pressed delete ", details.id);
   }
 
+  function handleBack() {
+    navigate("/read");
+  }
+
   function makeBold() {
     const contentid = document.getElementById("contentid");
     if (contentid.selectionStart == contentid.selectionEnd) {
@@ -64,6 +70,7 @@ export default function Edit() {
       contentid.selectionEnd
     );
     contentid.setRangeText(`**${selected}**`);
+    setContent(contentid.value);
   }
 
   function makeItalics() {
@@ -77,6 +84,7 @@ export default function Edit() {
       contentid.selectionEnd
     );
     contentid.setRangeText(`*${selected}*`);
+    setContent(contentid.value);
   }
   function makeH() {
     const contentid = document.getElementById("contentid");
@@ -89,6 +97,7 @@ export default function Edit() {
       contentid.selectionEnd
     );
     contentid.setRangeText(`# ${selected}`);
+    setContent(contentid.value);
   }
   function makesH() {
     const contentid = document.getElementById("contentid");
@@ -101,6 +110,7 @@ export default function Edit() {
       contentid.selectionEnd
     );
     contentid.setRangeText(`### ${selected}`);
+    setContent(contentid.value);
   }
 
   return (
@@ -140,18 +150,16 @@ export default function Edit() {
           <input
             placeholder="TITLE"
             type="text"
-            // style="white-space: pre-line"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value.toUpperCase)}
             className="bg-dark text-center my-6 font-bold md:text-[4rem] sm:text-[3rem] text-[2rem] mx-[10vw] whitespace-normal outline-none font-green break-normal"
           />
           <textarea
             id="contentid"
             placeholder="CONTENT"
             value={content}
-            // style="white-space: pre-line"
             onChange={(e) => setContent(e.target.value)}
-            className="font-redhat whitespace-normal break-normal bg-dark lg:mx-[18vw] mx-[10vw] my-[5vh] outline-none font-green h-[75vh] "
+            className="font-redhat whitespace-normal break-normal bg-dark lg:mx-[18vw] mx-[10vw] my-[5vh] text-xl outline-none font-green h-[75vh] "
           />
 
           <div className="flex justify-between mx-[10vw]">
@@ -160,6 +168,12 @@ export default function Edit() {
               className="cursor-pointer font-dark md:text-xl bg-yellow font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 "
             >
               SAVE
+            </button>
+            <button
+              onClick={(e) => handleBack(e)}
+              className="cursor-pointer font-dark md:text-xl bg-yellow font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 "
+            >
+              BACK
             </button>
             <button
               onClick={(e) => handleDelete(e)}
