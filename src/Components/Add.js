@@ -20,6 +20,7 @@ export default function Add() {
       id: v4(),
       title: title,
       content: content,
+      likes: 0,
     };
 
     const handlenew = async () => {
@@ -35,12 +36,12 @@ export default function Add() {
   }
 
   return (
-    <div className="bg-dark w-screen min-h-[90vh] pb-[10vh] overflow-y-scroll scrollbar-thin scrollbar-thumb-[#77AFA0] scrollbar-track-[#363538] scrollbar-thumb-rounded-full">
+    <div className="bg-dark w-screen min-h-[85vh] pb-[10vh] overflow-y-scroll scrollbar-thin scrollbar-thumb-[#77AFA0] scrollbar-track-[#363538] scrollbar-thumb-rounded-full">
       <div
         id="added"
-        className="bg-yellow w-full font-bold font-dark flex items-center justify-center"
+        className="text-sm md:text-xl bg-yellow fixed w-full font-bold font-dark flex items-center justify-center"
       ></div>
-      <div className="flex justify-between md:w-[40vw] w-[80vw] mx-auto py-6">
+      <div className="flex justify-between md:w-[40vw] w-[80vw] mx-auto py-6 mt-8">
         <img
           src={bold}
           className="hover:scale-[1.2] md:h-[2rem] h-[1.5rem] cursor-pointer"
@@ -71,31 +72,24 @@ export default function Add() {
           placeholder="TITLE"
           type="text"
           value={title}
+          style="white-space: pre-line"
           onChange={(e) => setTitle(e.target.value)}
-          className="bg-dark text-center my-6 font-bold md:text-[5rem] text-[3rem] outline-none font-green break-normal"
+          className="bg-dark text-center my-6 font-bold md:text-[4rem] sm:text-[3rem] text-[2rem] mx-[10vw] whitespace-normal outline-none font-green break-normal"
         />
         <textarea
           placeholder="CONTENT"
           value={content}
+          style="white-space: pre-line"
           onChange={(e) => setContent(e.target.value)}
-          className="font-redhat whitespace-normal break-normal bg-dark mx-[15vw] text-left mb-12 outline-none text-xl tracking-wide font-green min-h-[20vh] border-b-[3px] border-[#77AFA0] overflow-y-scroll scrollbar-thin scrollbar-thumb-[#77AFA0] scrollbar-track-[#363538] scrollbar-thumb-rounded-full"
+          className="font-redhat whitespace-normal break-normal bg-dark lg:mx-[18vw] mx-[10vw] my-[5vh] outline-none font-green min-h-[70vh]"
         />
         <button
           onClick={(e) => handleSubmitBlog(e)}
-          className=" font-dark bg-yellow cursor-pointer bg-yellow md:text-xl font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 mx-4 my-auto absolute bottom-20 right-10"
+          className="cursor-pointer font-dark md:text-xl bg-yellow font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 md:w-[10vw] w-[20] mx-auto"
         >
           ADD
         </button>
       </form>
-      {/* <div>
-        {blog &&
-          blog.map((eachblog) => (
-            <div key={eachblog.id}>
-              <div className="text-2xl">{eachblog.title}</div>
-              <div className="text-xl">{eachblog.content}</div>
-            </div>
-          ))}
-      </div> */}
     </div>
   );
 }

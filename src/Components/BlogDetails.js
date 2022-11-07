@@ -11,14 +11,14 @@ export default function BlogDetails({ auth }) {
   useEffect(() => {
     allData.map((each) => {
       if (each.id == currentid) {
-        console.log(each);
+        // console.log(each);
         const temp = {
           id: each.id,
           title: each.title,
           content: each.content,
           likes: each.likes,
         };
-        console.log("num of likes: " + each.likes);
+        // console.log("num of likes: " + each.likes);
         setDetails(temp);
       }
     });
@@ -35,7 +35,7 @@ export default function BlogDetails({ auth }) {
   }, [auth]);
 
   function handleDeleteClick() {
-    console.log("delete clicked, ", currentid);
+    // console.log("delete clicked, ", currentid);
     if (auth) {
       const mess = handleDelete(currentid);
       const message = document.getElementById("message");
@@ -54,41 +54,43 @@ export default function BlogDetails({ auth }) {
   }
 
   return (
-    <div className="bg-dark w-screen h-[90vh] pb-[10vh] font-yellow text-center overflow-x-hidden font-green ">
+    <div className="bg-dark w-screen h-[85vh] pb-[20vh] font-yellow text-center overflow-x-hidden font-green ">
       <div
         id="message"
-        className="bg-yellow w-full mb-8 font-bold font-dark flex items-center justify-center"
+        className="text-sm md:text-xl bg-yellow w-full font-bold font-dark flex items-center justify-center fixed"
       ></div>
-      <div className="w-full text-center font-bold font-green text-3xl">
+      <div className="w-full mt-8 text-center font-bold font-green text-3xl">
         {Loader && `LOADING...`}
       </div>
-      <div className="md:text-[5rem] text-[3rem] font-bold">
+      <div className="lg:text-[5rem] md:text-[4rem] sm:text-[3rem] mt-8 text-[2rem] mx-[10vw] font-bold">
         {/* {console.log("title:", details.title)} */}
         {details.title ? details.title.toUpperCase() : details.title}
       </div>
-      <div className="font-redhat text-xl text-left mx-[18vw] my-[5vh]">
+      <div className="font-redhat md:text-xl text-md text-left lg:mx-[18vw] mx-[10vw] my-[5vh]">
         {details && details.content}
       </div>
-      <div className="flex justify-between sm:mx-[15vw] mx-[5vw]">
-        <div className="flex">
-          <button
-            onClick={handleDeleteClick}
-            className="cursor-pointer font-dark md:text-xl bg-yellow font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 "
-          >
-            DELETE
+      {!Loader && (
+        <div className="flex justify-between sm:mx-[15vw] mx-[5vw]">
+          <div className="flex">
+            <button
+              onClick={handleDeleteClick}
+              className="cursor-pointer font-dark md:text-xl bg-yellow font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 "
+            >
+              DELETE
+            </button>
+            <Link
+              className=" cursor-pointer bg-yellow md:text-xl font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 mx-4 my-auto"
+              to="./edit"
+            >
+              EDIT
+            </Link>
+          </div>
+          <button className=" cursor-pointer font-dark bg-yellow rounded-sm text-center font-bold md:px-4 md:py-2 p-1 md:text-xl my-auto mx-4 flex align-middle gap-2">
+            {details.likes}{" "}
+            <img src={heart} className="md:h-[1.8rem] h-[1.2rem]" />
           </button>
-          <Link
-            className=" cursor-pointer bg-yellow md:text-xl font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 mx-4 my-auto"
-            to="./edit"
-          >
-            EDIT
-          </Link>
         </div>
-        <button className=" cursor-pointer font-dark bg-yellow rounded-sm text-center font-bold md:px-4 md:py-2 p-1 md:text-xl my-auto mx-4 flex align-middle gap-2">
-          <img src={heart} className="md:h-[1.8rem] h-[1.2rem]" />
-          {details.likes}
-        </button>
-      </div>
+      )}
     </div>
   );
 }

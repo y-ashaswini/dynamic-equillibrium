@@ -32,7 +32,7 @@ export default function Blogtile({ id, title, content, likes }) {
             contentVisibility[contentState] + " md:text-lg text-sm md:ml-[4rem] ml-[2rem]"
           }
         >
-          {content && content.slice(0,120)+" ..."}
+          {content && content.slice(0,50)+" ..."}
           <div className="w-full my-4 border-t-[3px] border-[#77AFA0] py-2 flex justify-between text-sm ">
             {`${likes}`} LIKES
             {/* <span>{comments} COMMENTS</span> */}

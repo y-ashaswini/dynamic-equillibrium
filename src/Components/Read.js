@@ -14,15 +14,17 @@ export default function Read({ auth }) {
         message.innerText = "";
       }, 3000);
     }
+
+    // console.log(Date.now());
   }, [auth]);
 
   return (
-    <div className="bg-dark w-screen h-[90vh] pb-[10vh] overflow-y-scroll scrollbar-thin scrollbar-thumb-[#77AFA0] scrollbar-track-[#363538] scrollbar-thumb-rounded-full">
+    <div className="bg-dark w-screen h-[85vh] pb-[10vh] overflow-y-scroll scrollbar-thin scrollbar-thumb-[#77AFA0] scrollbar-track-[#363538] scrollbar-thumb-rounded-full">
       <div
         id="message"
-        className="bg-yellow w-full font-bold font-dark flex items-center mb-8 justify-center"
+        className="bg-yellow w-full font-bold font-dark flex items-center justify-center fixed"
       ></div>
-      <div className="w-full text-center font-bold font-green text-3xl">
+      <div className="w-full text-center font-bold font-green text-3xl mt-8">
         {Loader && `LOADING...`}
       </div>
       {allData &&

@@ -62,12 +62,12 @@ export default function Edit({ allData, Loader }) {
   }
 
   return (
-    <div className="bg-dark w-screen h-[90vh] pb-[10vh] overflow-y-scroll scrollbar-thin scrollbar-thumb-[#77AFA0] scrollbar-track-[#363538] scrollbar-thumb-rounded-full">
+    <div className="bg-dark w-screen h-[85vh] pb-[10vh] overflow-y-scroll scrollbar-thin scrollbar-thumb-[#77AFA0] scrollbar-track-[#363538] scrollbar-thumb-rounded-full">
       <div
         id="saved"
-        className="bg-yellow w-full font-bold font-dark flex items-center justify-center"
+        className="text-sm md:text-xl  bg-yellow w-full font-bold font-dark flex items-center justify-center fixed"
       ></div>
-      <div className="flex justify-between md:w-[40vw] w-[80vw] mx-auto py-6">
+      <div className="flex justify-between md:w-[40vw] mt-8 w-[80vw] mx-auto py-6">
         <img
           src={bold}
           className="hover:scale-[1.2] md:h-[2rem] h-[1.5rem] cursor-pointer"
@@ -96,33 +96,40 @@ export default function Edit({ allData, Loader }) {
       <div className="w-full text-center font-bold font-green text-3xl">
         {Loader && `LOADING...`}
       </div>
-      <form className="flex flex-col mx-auto min-h-full">
-        <input
-          placeholder="TITLE"
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="bg-dark text-center my-6 font-bold md:text-[5rem] text-[3rem] outline-none font-green break-normal"
-        />
-        <textarea
-          placeholder="CONTENT"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          className="font-redhat whitespace-normal break-normal bg-dark mx-[15vw] text-left mb-12 outline-none text-xl tracking-wide font-green min-h-[20vh] border-b-[3px] border-[#77AFA0] overflow-y-scroll scrollbar-thin scrollbar-thumb-[#77AFA0] scrollbar-track-[#363538] scrollbar-thumb-rounded-full"
-        />
-        <button
-          onClick={(e) => handleSave(e)}
-          className="font-dark bg-yellow cursor-pointer bg-yellow md:text-xl font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 mx-4 my-auto absolute bottom-20 right-10"
-        >
-          SAVE
-        </button>
-        <button
-          onClick={(e) => handleDelete(e)}
-          className="font-dark bg-yellow cursor-pointer bg-yellow md:text-xl font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 mx-4 my-auto absolute bottom-20 left-10"
-        >
-          DELETE
-        </button>
-      </form>
+      {!Loader && (
+        <form className="flex flex-col mx-auto min-h-full">
+          <input
+            placeholder="TITLE"
+            type="text"
+            style="white-space: pre-line"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="bg-dark text-center my-6 font-bold md:text-[4rem] sm:text-[3rem] text-[2rem] mx-[10vw] whitespace-normal outline-none font-green break-normal"
+          />
+          <textarea
+            placeholder="CONTENT"
+            value={content}
+            style="white-space: pre-line"
+            onChange={(e) => setContent(e.target.value)}
+            className="font-redhat whitespace-normal break-normal bg-dark lg:mx-[18vw] mx-[10vw] my-[5vh] outline-none font-green h-[75vh] "
+          />
+
+          <div className="flex justify-between mx-[10vw]">
+            <button
+              onClick={(e) => handleSave(e)}
+              className="cursor-pointer font-dark md:text-xl bg-yellow font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 "
+            >
+              SAVE
+            </button>
+            <button
+              onClick={(e) => handleDelete(e)}
+              className="cursor-pointer bg-yellow md:text-xl font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 my-auto"
+            >
+              DELETE
+            </button>
+          </div>
+        </form>
+      )}
     </div>
   );
 }

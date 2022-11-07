@@ -17,7 +17,7 @@ export default function Authorize({ Auth }) {
     }
   }
   return (
-    <div className="bg-dark w-screen min-h-[90vh] font-yellow">
+    <div className="bg-dark w-screen min-h-[85vh] font-yellow">
       <div className="font-bold md:text-[3rem] text-[2rem] ml-[2rem]">
         VERIFY YOUR IDENTITY
       </div>
