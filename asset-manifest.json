@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/dynamic-equillibrium/static/css/main.6a68c528.css",
+    "main.js": "/dynamic-equillibrium/static/js/main.2ea3c414.js",
+    "index.html": "/dynamic-equillibrium/index.html",
+    "main.6a68c528.css.map": "/dynamic-equillibrium/static/css/main.6a68c528.css.map",
+    "main.2ea3c414.js.map": "/dynamic-equillibrium/static/js/main.2ea3c414.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6a68c528.css",
+    "static/js/main.2ea3c414.js"
+  ]
+}
