@@ -10,8 +10,8 @@ export default function Home() {
   // }, 5000);
 
   return (
-    <div className="bg-dark h-screen screen flex flex-col justify-center">
-      <div className="lg:text-[5.5rem] md:text-[4rem] text-[3rem] font-bold font-yellow mx-auto leading-none relative bottom-[4vh]">
+    <div className="bg-dark h-[95vh] screen flex flex-col justify-center ">
+      <div className="lg:text-[5.5rem] md:text-[4rem] text-[3rem] font-bold font-yellow mx-auto leading-none relative bottom-[2vh]">
         <span className="block">DYNAMIC</span>
         <span>
           EQUILLI<span className="block sm:inline">BRIUM</span>
@@ -31,7 +31,7 @@ export default function Home() {
           YASHASWINI SHIVATHAYA
         </span> */}
         <Link to="/read">
-          <div className="cursor-pointer font-dark bg-green rounded-md text-center mt-[20vh] sm:py-2 py-1 lg:text-3xl md:text-2xl text-lg md:w-[10rem] w-[7rem] mx-auto">
+          <div className="cursor-pointer font-dark bg-green rounded-md text-center mt-[10vh] sm:py-2 py-1 lg:text-3xl md:text-2xl text-lg md:w-[10rem] w-[7rem] mx-auto">
             ENTER
           </div>
         </Link>

@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 import heart from "../images/heart.png";
 import Data from "../Data";
 import { handleDelete } from "./handleDelete";
 export default function BlogDetails({ auth }) {
   const navigate = useNavigate();
-  const [allData, Loader] = Data();
+  const [allData, Loader] = Data(); // calling data again.
   const [details, setDetails] = useState([]);
   const currentid = window.location.pathname.split("/")[2];
   useEffect(() => {
@@ -54,7 +55,7 @@ export default function BlogDetails({ auth }) {
   }
 
   return (
-    <div className="bg-dark w-screen h-[85vh] pb-[20vh] font-yellow text-center overflow-x-hidden font-green ">
+    <div className="bg-dark w-screen h-[85vh] pb-[20vh] font-yellow text-center overflow-x-hidden font-green overflow-y-scroll scrollbar-thin scrollbar-thumb-[#77AFA0] scrollbar-track-[#363538] scrollbar-thumb-rounded-full">
       <div
         id="message"
         className="text-sm md:text-xl bg-yellow w-full font-bold font-dark flex items-center justify-center fixed"
@@ -66,11 +67,13 @@ export default function BlogDetails({ auth }) {
         {/* {console.log("title:", details.title)} */}
         {details.title ? details.title.toUpperCase() : details.title}
       </div>
-      <div className="font-redhat md:text-xl text-md text-left lg:mx-[18vw] mx-[10vw] my-[5vh]">
+      {/* <div className=""> */}
+      <ReactMarkdown className="prose prose-headings:text-[#77AFA0] prose-em:text-[#77AFA0] prose-strong:text-[#77AFA0] font-green font-redhat text-xl text-left lg:mx-[18vw] mx-[10vw] my-[5vh]">
         {details && details.content}
-      </div>
+      </ReactMarkdown>
+      {/* </div> */}
       {!Loader && (
-        <div className="flex justify-between sm:mx-[15vw] mx-[5vw]">
+        <div className="flex justify-between mx-[10vw] lg:mx-[18vw] ">
           <div className="flex">
             <button
               onClick={handleDeleteClick}
@@ -85,7 +88,7 @@ export default function BlogDetails({ auth }) {
               EDIT
             </Link>
           </div>
-          <button className=" cursor-pointer font-dark bg-yellow rounded-sm text-center font-bold md:px-4 md:py-2 p-1 md:text-xl my-auto mx-4 flex align-middle gap-2">
+          <button className=" cursor-pointer font-dark bg-yellow rounded-sm text-center font-bold md:px-4 md:py-2 p-1 md:text-xl my-auto flex align-middle gap-2">
             {details.likes}{" "}
             <img src={heart} className="md:h-[1.8rem] h-[1.2rem]" />
           </button>

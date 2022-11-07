@@ -15,10 +15,9 @@ import BlogDetails from "./Components/BlogDetails";
 import Authorize from "./Components/Authorize";
 import Edit from "./Components/Edit";
 import { useEffect, useState } from "react";
-import Data from "./Data";
 export default function App() {
   // useEffect(() => {
-  const [allData, Loader] = Data();
+
   // }, []);
 
   const [auth, setAuth] = useState(false);
@@ -65,14 +64,14 @@ export default function App() {
           path="/read/:id/edit"
           element={
             <PrivateRoute auth={auth}>
-              <Edit allData={allData} loader = {Loader}/>
+              <Edit />
             </PrivateRoute>
           }
         />
         <Route exact path="/read/:id" element={<BlogDetails auth={auth} />} />
         <Route path="*" element={<Navigate to="/read" />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </BrowserRouter>
   );
 }

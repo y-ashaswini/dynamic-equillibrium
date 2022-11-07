@@ -4,10 +4,8 @@ import { useState } from "react";
 import { v4 } from "uuid";
 import bold from "../images/bold.png";
 import italics from "../images/italics.png";
-import underline from "../images/underline.png";
-import leftalign from "../images/leftalign.png";
-import centeralign from "../images/centeralign.png";
-import rightalign from "../images/rightalign.png";
+import H from "../images/H.png";
+import sH from "../images/sH.png";
 
 export default function Add() {
   console.log("add rendered");
@@ -20,7 +18,7 @@ export default function Add() {
       id: v4(),
       title: title,
       content: content,
-      likes: 0,
+      likes: parseInt(0),
     };
 
     const handlenew = async () => {
@@ -35,6 +33,56 @@ export default function Add() {
     setContent("");
   }
 
+  function makeBold() {
+    const contentid = document.getElementById("contentid");
+    if (contentid.selectionStart == contentid.selectionEnd) {
+      return; // nothing is selected
+    }
+
+    let selected = contentid.value.slice(
+      contentid.selectionStart,
+      contentid.selectionEnd
+    );
+    contentid.setRangeText(`**${selected}**`);
+  }
+
+  function makeItalics() {
+    const contentid = document.getElementById("contentid");
+    if (contentid.selectionStart == contentid.selectionEnd) {
+      return; // nothing is selected
+    }
+
+    let selected = contentid.value.slice(
+      contentid.selectionStart,
+      contentid.selectionEnd
+    );
+    contentid.setRangeText(`*${selected}*`);
+  }
+  function makeH() {
+    const contentid = document.getElementById("contentid");
+    if (contentid.selectionStart == contentid.selectionEnd) {
+      return; // nothing is selected
+    }
+
+    let selected = contentid.value.slice(
+      contentid.selectionStart,
+      contentid.selectionEnd
+    );
+    contentid.setRangeText(`# ${selected}`);
+  }
+  function makesH() {
+    const contentid = document.getElementById("contentid");
+    if (contentid.selectionStart == contentid.selectionEnd) {
+      return; // nothing is selected
+    }
+
+    let selected = contentid.value.slice(
+      contentid.selectionStart,
+      contentid.selectionEnd
+    );
+    contentid.setRangeText(`### ${selected}`);
+  }
+
   return (
     <div className="bg-dark w-screen min-h-[85vh] pb-[10vh] overflow-y-scroll scrollbar-thin scrollbar-thumb-[#77AFA0] scrollbar-track-[#363538] scrollbar-thumb-rounded-full">
       <div
@@ -44,26 +92,22 @@ export default function Add() {
       <div className="flex justify-between md:w-[40vw] w-[80vw] mx-auto py-6 mt-8">
         <img
           src={bold}
+          onClick={makeBold}
           className="hover:scale-[1.2] md:h-[2rem] h-[1.5rem] cursor-pointer"
         />
         <img
           src={italics}
+          onClick={makeItalics}
           className="hover:scale-[1.2] md:h-[2rem] h-[1.5rem] cursor-pointer"
         />
         <img
-          src={underline}
+          src={H}
+          onClick={makeH}
           className="hover:scale-[1.2] md:h-[2rem] h-[1.5rem] cursor-pointer"
         />
         <img
-          src={leftalign}
-          className="hover:scale-[1.2] md:h-[2rem] h-[1.5rem] cursor-pointer"
-        />
-        <img
-          src={centeralign}
-          className="hover:scale-[1.2] md:h-[2rem] h-[1.5rem] cursor-pointer"
-        />
-        <img
-          src={rightalign}
+          src={sH}
+          onClick={makesH}
           className="hover:scale-[1.2] md:h-[2rem] h-[1.5rem] cursor-pointer"
         />
       </div>
@@ -72,14 +116,15 @@ export default function Add() {
           placeholder="TITLE"
           type="text"
           value={title}
-          style="white-space: pre-line"
+          // style="white-space: pre-line"
           onChange={(e) => setTitle(e.target.value)}
           className="bg-dark text-center my-6 font-bold md:text-[4rem] sm:text-[3rem] text-[2rem] mx-[10vw] whitespace-normal outline-none font-green break-normal"
         />
         <textarea
           placeholder="CONTENT"
           value={content}
-          style="white-space: pre-line"
+          id="contentid"
+          // style="white-space: pre-line"
           onChange={(e) => setContent(e.target.value)}
           className="font-redhat whitespace-normal break-normal bg-dark lg:mx-[18vw] mx-[10vw] my-[5vh] outline-none font-green min-h-[70vh]"
         />
