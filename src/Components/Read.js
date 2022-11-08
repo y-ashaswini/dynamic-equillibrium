@@ -34,7 +34,7 @@ export default function Read({ auth }) {
             id={each.id}
             title={each.title}
             content={each.content}
-            likes={each.likes}
+            // likes={each.likes}
             // comments={23}
           />
         ))}

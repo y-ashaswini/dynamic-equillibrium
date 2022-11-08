@@ -6,19 +6,35 @@ import bold from "../images/bold.png";
 import italics from "../images/italics.png";
 import H from "../images/H.png";
 import sH from "../images/sH.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Add() {
-  console.log("add rendered");
+  // console.log("add rendered");
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   function handleSubmitBlog(e) {
     e.preventDefault();
+    const message3 = document.getElementById("added");
+    if (!title.trim()) {
+      message3.innerText = "ADD A TITLE!";
+      setTimeout(() => {
+        message3.innerText = "";
+      }, 2000);
+      return;
+    } else if (!content.trim()) {
+      message3.innerText = "WRITE SOME CONTENT!";
+      setTimeout(() => {
+        message3.innerText = "";
+      }, 2000);
+      return;
+    }
+
     const newblog = {
       id: v4(),
       title: title,
       content: content,
-      likes: 0,
     };
 
     const handlenew = async () => {
@@ -31,6 +47,10 @@ export default function Add() {
     document.getElementById("added").innerText = "ADDED!";
     setTitle("");
     setContent("");
+  }
+
+  function handleBack() {
+    navigate("/read");
   }
 
   function makeBold() {
@@ -130,14 +150,22 @@ export default function Add() {
           id="contentid"
           // style="white-space: pre-line"
           onChange={(e) => setContent(e.target.value)}
-          className="text-xl font-redhat whitespace-normal break-normal bg-dark lg:mx-[18vw] mx-[10vw] my-[5vh] outline-none font-green min-h-[40vh]"
+          className="text-xl font-redhat whitespace-normal break-normal bg-dark lg:mx-[18vw] mx-[10vw] my-[5vh] outline-none font-green min-h-[40vh] overflow-x-hidden overflow-y-scroll scrollbar-thin scrollbar-thumb-[#77AFA0] scrollbar-track-[#363538] scrollbar-thumb-rounded-full"
         />
-        <button
-          onClick={(e) => handleSubmitBlog(e)}
-          className="cursor-pointer font-dark md:text-xl bg-yellow font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 md:w-[10vw] w-[20] mx-auto"
-        >
-          ADD
-        </button>
+        <div className="flex justify-between mx-[10vw] lg:mx-[18vw]">
+          <button
+            onClick={(e) => handleSubmitBlog(e)}
+            className="cursor-pointer font-dark md:text-xl bg-yellow font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1"
+          >
+            ADD
+          </button>
+          <button
+            onClick={(e) => handleBack(e)}
+            className="cursor-pointer font-dark md:text-xl bg-yellow font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 "
+          >
+            BACK
+          </button>
+        </div>
       </form>
     </div>
   );

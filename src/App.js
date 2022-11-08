@@ -16,9 +16,7 @@ import Authorize from "./Components/Authorize";
 import Edit from "./Components/Edit";
 import { useEffect, useState } from "react";
 export default function App() {
-  // useEffect(() => {
 
-  // }, []);
 
   const [auth, setAuth] = useState(false);
   function Auth(user_password) {

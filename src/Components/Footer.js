@@ -5,7 +5,7 @@ export default function Footer() {
         className="outline-none  font-green opacity-40 font-bold hover:opacity-100 text-[0.8rem] md:text-[1rem]"
         href="https://github.com/y-ashaswini"
       >
-        Made with <span className="font-yellow">&#x2665;</span> by Yashaswini
+        Created with <span className="font-yellow">&#x2665;</span> by Yashaswini
       </a>
     </div>
   );

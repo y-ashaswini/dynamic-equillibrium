@@ -26,7 +26,7 @@ export default function Edit() {
           id: each.id,
           title: each.title,
           content: each.content,
-          likes: each.likes,
+          // likes: each.likes,
         });
         setTitle(each.title);
         setContent(each.content);
@@ -159,10 +159,11 @@ export default function Edit() {
             placeholder="CONTENT"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            className="font-redhat whitespace-normal break-normal bg-dark lg:mx-[18vw] mx-[10vw] my-[5vh] text-xl outline-none font-green h-[75vh] "
+            className="font-redhat whitespace-normal break-normal bg-dark lg:mx-[18vw] mx-[10vw] my-[5vh] text-xl outline-none font-green h-[75vh] overflow-x-hidden overflow-y-scroll scrollbar-thin scrollbar-thumb-[#77AFA0] scrollbar-track-[#363538] scrollbar-thumb-rounded-full px-2 "
           />
 
-          <div className="flex justify-between mx-[10vw]">
+          <div className="flex justify-between mx-[10vw] lg:mx-[18vw]">
+            <div className="flex gap-4">
             <button
               onClick={(e) => handleSave(e)}
               className="cursor-pointer font-dark md:text-xl bg-yellow font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 "
@@ -174,7 +175,7 @@ export default function Edit() {
               className="cursor-pointer font-dark md:text-xl bg-yellow font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 "
             >
               BACK
-            </button>
+            </button></div>
             <button
               onClick={(e) => handleDelete(e)}
               className="cursor-pointer bg-yellow md:text-xl font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 my-auto"
