@@ -5,6 +5,7 @@ import { useEffect } from "react";
 export default function Read({ auth }) {
   // Calls data freshly everytime one navigates to this page
   const [allData, Loader] = Data();
+  // console.log(allData);
   // const { id } = useParams();
   useEffect(() => {
     if (auth) {
@@ -34,7 +35,7 @@ export default function Read({ auth }) {
             id={each.id}
             title={each.title}
             content={each.content}
-            // likes={each.likes}
+            likes={each.likes}
             // comments={23}
           />
         ))}

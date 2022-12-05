@@ -26,7 +26,7 @@ export default function Edit() {
           id: each.id,
           title: each.title,
           content: each.content,
-          // likes: each.likes,
+          likes: each.likes,
         });
         setTitle(each.title);
         setContent(each.content);
@@ -41,6 +41,7 @@ export default function Edit() {
       id: details.id,
       title: title,
       content: content,
+      likes: details.likes,
     };
     const temprun = async () => {
       const docRef = doc(db, "blogs", edittedblog.id);
@@ -164,18 +165,19 @@ export default function Edit() {
 
           <div className="flex justify-between mx-[10vw] lg:mx-[18vw]">
             <div className="flex gap-4">
-            <button
-              onClick={(e) => handleSave(e)}
-              className="cursor-pointer font-dark md:text-xl bg-yellow font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 "
-            >
-              SAVE
-            </button>
-            <button
-              onClick={(e) => handleBack(e)}
-              className="cursor-pointer font-dark md:text-xl bg-yellow font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 "
-            >
-              BACK
-            </button></div>
+              <button
+                onClick={(e) => handleSave(e)}
+                className="cursor-pointer font-dark md:text-xl bg-yellow font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 "
+              >
+                SAVE
+              </button>
+              <button
+                onClick={(e) => handleBack(e)}
+                className="cursor-pointer font-dark md:text-xl bg-yellow font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 "
+              >
+                BACK
+              </button>
+            </div>
             <button
               onClick={(e) => handleDelete(e)}
               className="cursor-pointer bg-yellow md:text-xl font-dark rounded-sm text-center font-bold sm:px-4 sm:py-2 p-1 my-auto"

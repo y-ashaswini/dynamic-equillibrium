@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import triangle from "../images/triangle.png";
 
-export default function Blogtile({ id, title, content }) {
+export default function Blogtile({ id, title, content, likes }) {
   const contlen = content.length;
   const positions = ["rotate-0", "rotate-90"];
   const contentVisibility = ["hidden", "relative"];
@@ -42,7 +42,7 @@ export default function Blogtile({ id, title, content }) {
                 : "LESS THAN A"
             }`}{" "}
             MIN READ
-            {/* <span>{comments} COMMENTS</span> */}
+            <span>{likes + 0} LIKES</span>
           </div>
         </div>
       </div>
